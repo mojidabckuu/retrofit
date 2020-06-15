@@ -4,6 +4,7 @@ apply plugin: 'com.vanniktech.maven.publish'
 
 dependencies {
   api deps.okhttp
+  api deps.gson
 
   compileOnly deps.android
   compileOnly deps.kotlinStdLib

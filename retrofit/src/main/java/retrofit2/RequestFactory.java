@@ -59,6 +59,7 @@ import retrofit2.http.Path;
 import retrofit2.http.Query;
 import retrofit2.http.QueryMap;
 import retrofit2.http.QueryName;
+import retrofit2.http.QueryObject;
 import retrofit2.http.Tag;
 import retrofit2.http.Url;
 
@@ -504,6 +505,8 @@ final class RequestFactory {
         return new ParameterHandler.QueryMap<>(
             method, p, valueConverter, ((QueryMap) annotation).encoded());
 
+      } else if (annotation instanceof QueryObject)  {
+        return new ParameterHandler.QueryObject<>(method, p, retrofit, annotation, annotations);
       } else if (annotation instanceof Header) {
         validateResolvableType(p, type);
         Header header = (Header) annotation;
